@@ -5,7 +5,7 @@
  * @Assignment Chapter 22 exercise #22.13-22.14
  * @DueDate 5/4/2021
  */
-package brickbreaker;
+
 
 import java.awt.Graphics;
 import java.awt.Font;
