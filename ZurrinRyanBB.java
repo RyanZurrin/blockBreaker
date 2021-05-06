@@ -346,11 +346,11 @@ class BlockBreaker extends JPanel implements
 
         if (playing) {
             if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//left zone
-                    intersects(new Rectangle(paddlePosX, 650, padW+(padW*1/3),padH)) ) {
+                    intersects(new Rectangle(paddlePosX, 650, (padW*1/3),padH)) ) {
                 dY = -dY;
             }
            else if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//center zone
-                    intersects(new Rectangle(paddlePosX, 650, padW+(padW*1/3)+(padW*1/3),padH)) ) {
+                    intersects(new Rectangle(paddlePosX, 650,(padW*1/3)+(padW*1/3),padH)) ) {
                 dY = -dY;
             }
            else  if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//right zone
