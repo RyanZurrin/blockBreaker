@@ -5,8 +5,6 @@
  * @Assignment Chapter 22 exercise #22.13-22.14
  * @DueDate 5/4/2021
  */
-
-
 import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -88,7 +86,7 @@ class BlockBreaker extends JPanel implements
     // variable to track the paddles position
     private int paddlePosX = 410;
     private int padH = 8;
-    private int padW = 100;
+    private int padW = 120;
     private int edgeCase = 680;
 
 
@@ -304,7 +302,7 @@ class BlockBreaker extends JPanel implements
         lev_dX = dX;
         lev_dY = dY;
         paddlePosX = paddlePosX;
-        padW = padW - 5;
+        padW = (padW-(padW*5)/100);
         edgeCase+=5;
         level++;
         totalBlocks = NUM_BLOCKS;
@@ -347,8 +345,16 @@ class BlockBreaker extends JPanel implements
         FRAME_SEQUENCER.start();
 
         if (playing) {
-            if (new Rectangle(bStartPosX, bStartPosY, 20, 20).
-                    intersects(new Rectangle(paddlePosX, 650, padW,padH)) ) {
+            if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//left zone
+                    intersects(new Rectangle(paddlePosX, 650, padW+(padW*1/3),padH)) ) {
+                dY = -dY;
+            }
+           else if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//center zone
+                    intersects(new Rectangle(paddlePosX, 650, padW+(padW*1/3)+(padW*1/3),padH)) ) {
+                dY = -dY;
+            }
+           else  if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//right zone
+                    intersects(new Rectangle(paddlePosX, 650, (padW*2/3)+(padW*1/3),padH)) ) {
                 dY = -dY;
             }
 
