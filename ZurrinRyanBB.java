@@ -334,6 +334,31 @@ class BlockBreaker extends JPanel implements
         waitToRestart = false;
         repaint();
     }//end method gameOver
+    private void hitLeftBounds(){
+        if(dX < 0){
+            dX = lev_dX*2;
+
+        }else{
+            dX = lev_dX*-2;
+        }        
+      
+    }
+    private void hitRightBounds(){
+        if(dX < 0){
+            dX = lev_dX*2;
+        }else{
+            dX = lev_dX*-2;
+        }
+        
+    }
+    private void hitCenterBounds(){
+        if(dX < 0){
+            dX = lev_dX;
+        }else{
+            dX = -lev_dX;
+        }
+        
+    }
 
     /**
      * method that determines the appropriate response to specific actions that
@@ -347,15 +372,21 @@ class BlockBreaker extends JPanel implements
         if (playing) {
             if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//left zone
                     intersects(new Rectangle(paddlePosX, 650, (padW*1/3),padH)) ) {
-                dY = -dY;
+                        hitLeftBounds();
+                        dY = -dY;
+                
             }
            else if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//center zone
                     intersects(new Rectangle(paddlePosX, 650,(padW*1/3)+(padW*1/3),padH)) ) {
-                dY = -dY;
+                        hitCenterBounds();
+                        dY = -dY;
+                
             }
            else  if (new Rectangle(bStartPosX, bStartPosY, 20, 20).//right zone
                     intersects(new Rectangle(paddlePosX, 650, (padW*2/3)+(padW*1/3),padH)) ) {
-                dY = -dY;
+                        hitRightBounds();
+                        dY = -dY;
+               
             }
 
             BlockHit:  //used to step out of the loop when needed to break
